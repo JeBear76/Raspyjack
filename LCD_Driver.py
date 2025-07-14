@@ -30,9 +30,9 @@ import RPi.GPIO as GPIO
 import time
 import numpy as np
 
-LCD_1IN44 = 1
+LCD_1IN44 = 0
 LCD_1IN8 = 0
-LCD_1IN3 = 0
+LCD_1IN3 = 1
 
 if LCD_1IN44 == 1:
 	LCD_WIDTH  = 128  #LCD width
@@ -73,7 +73,7 @@ class LCD:
 		self.LCD_X_Adjust = LCD_X
 		self.LCD_Y_Adjust = LCD_Y
 
-	"""    Hardware reset     """
+	"""    Hardware reset    """
 	def  LCD_Reset(self):
 		GPIO.output(LCD_Config.LCD_RST_PIN, GPIO.HIGH)
 		LCD_Config.Driver_Delay_ms(100)
@@ -82,7 +82,7 @@ class LCD:
 		GPIO.output(LCD_Config.LCD_RST_PIN, GPIO.HIGH)
 		LCD_Config.Driver_Delay_ms(100)
 
-	"""    Write register address and data     """
+	"""    Write register address and data    """
 	def  LCD_WriteReg(self, Reg):
 		GPIO.output(LCD_Config.LCD_DC_PIN, GPIO.LOW)
 		LCD_Config.SPI_Write_Byte([Reg])
@@ -205,89 +205,89 @@ class LCD:
 		self.LCD_WriteReg(0x29)
 
 	def ST7789_InitReg(self):
-        self.LCD_WriteReg(0x36)
-        self.LCD_WriteData_8bit(0x70)                 #self.LCD_WriteData_8bit(0x00)
+		self.LCD_WriteReg(0x36)
+		self.LCD_WriteData_8bit(0x70) #self.LCD_WriteData_8bit(0x00)
 
-        self.LCD_WriteReg(0x11)     
+		self.LCD_WriteReg(0x11)
 
-        time.sleep(0.12)               
+		time.sleep(0.12)
 
-        self.LCD_WriteReg(0x36)     
-        self.LCD_WriteData_8bit(0x00)   
+		self.LCD_WriteReg(0x36)
+		self.LCD_WriteData_8bit(0x00)
 
-        self.LCD_WriteReg(0x3A)     
-        self.LCD_WriteData_8bit(0x05)   
+		self.LCD_WriteReg(0x3A)
+		self.LCD_WriteData_8bit(0x05)
 
-        self.LCD_WriteReg(0xB2)     
-        self.LCD_WriteData_8bit(0x0C)   
-        self.LCD_WriteData_8bit(0x0C)   
-        self.LCD_WriteData_8bit(0x00)   
-        self.LCD_WriteData_8bit(0x33)   
-        self.LCD_WriteData_8bit(0x33)   
+		self.LCD_WriteReg(0xB2)
+		self.LCD_WriteData_8bit(0x0C)
+		self.LCD_WriteData_8bit(0x0C)
+		self.LCD_WriteData_8bit(0x00)
+		self.LCD_WriteData_8bit(0x33)
+		self.LCD_WriteData_8bit(0x33)
 
-        self.LCD_WriteReg(0xB7)     
-        self.LCD_WriteData_8bit(0x00)   
+		self.LCD_WriteReg(0xB7)
+		self.LCD_WriteData_8bit(0x00)
 
-        self.LCD_WriteReg(0xBB)     
-        self.LCD_WriteData_8bit(0x3F)   
+		self.LCD_WriteReg(0xBB)
+		self.LCD_WriteData_8bit(0x3F)
 
-        self.LCD_WriteReg(0xC0)     
-        self.LCD_WriteData_8bit(0x2C)   
+		self.LCD_WriteReg(0xC0)
+		self.LCD_WriteData_8bit(0x2C)
 
-        self.LCD_WriteReg(0xC2)     
-        self.LCD_WriteData_8bit(0x01)   
+		self.LCD_WriteReg(0xC2)
+		self.LCD_WriteData_8bit(0x01)
 
-        self.LCD_WriteReg(0xC3)     
-        self.LCD_WriteData_8bit(0x0D)   
+		self.LCD_WriteReg(0xC3)
+		self.LCD_WriteData_8bit(0x0D)
 
-        self.LCD_WriteReg(0xC6)     
-        self.LCD_WriteData_8bit(0x0F)     
+		self.LCD_WriteReg(0xC6)
+		self.LCD_WriteData_8bit(0x0F)
 
-        self.LCD_WriteReg(0xD0)     
-        self.LCD_WriteData_8bit(0xA7)   
+		self.LCD_WriteReg(0xD0)
+		self.LCD_WriteData_8bit(0xA7)
 
-        self.LCD_WriteReg(0xD0)     
-        self.LCD_WriteData_8bit(0xA4)   
-        self.LCD_WriteData_8bit(0xA1)   
+		self.LCD_WriteReg(0xD0)
+		self.LCD_WriteData_8bit(0xA4)
+		self.LCD_WriteData_8bit(0xA1)
 
-        self.LCD_WriteReg(0xD6)     
-        self.LCD_WriteData_8bit(0xA1)   
+		self.LCD_WriteReg(0xD6)
+		self.LCD_WriteData_8bit(0xA1)
 
-        self.LCD_WriteReg(0xE0)
-        self.LCD_WriteData_8bit(0xF0)
-        self.LCD_WriteData_8bit(0x00)
-        self.LCD_WriteData_8bit(0x02)
-        self.LCD_WriteData_8bit(0x01)
-        self.LCD_WriteData_8bit(0x00)
-        self.LCD_WriteData_8bit(0x00)
-        self.LCD_WriteData_8bit(0x27)
-        self.LCD_WriteData_8bit(0x43)
-        self.LCD_WriteData_8bit(0x3F)
-        self.LCD_WriteData_8bit(0x33)
-        self.LCD_WriteData_8bit(0x0E)
-        self.LCD_WriteData_8bit(0x0E)
-        self.LCD_WriteData_8bit(0x26)
-        self.LCD_WriteData_8bit(0x2E)
+		self.LCD_WriteReg(0xE0)
+		self.LCD_WriteData_8bit(0xF0)
+		self.LCD_WriteData_8bit(0x00)
+		self.LCD_WriteData_8bit(0x02)
+		self.LCD_WriteData_8bit(0x01)
+		self.LCD_WriteData_8bit(0x00)
+		self.LCD_WriteData_8bit(0x00)
+		self.LCD_WriteData_8bit(0x27)
+		self.LCD_WriteData_8bit(0x43)
+		self.LCD_WriteData_8bit(0x3F)
+		self.LCD_WriteData_8bit(0x33)
+		self.LCD_WriteData_8bit(0x0E)
+		self.LCD_WriteData_8bit(0x0E)
+		self.LCD_WriteData_8bit(0x26)
+		self.LCD_WriteData_8bit(0x2E)
 
-        self.LCD_WriteReg(0xE1)
-        self.LCD_WriteData_8bit(0xF0)
-        self.LCD_WriteData_8bit(0x07)
-        self.LCD_WriteData_8bit(0x0D)
-        self.LCD_WriteData_8bit(0x0D)
-        self.LCD_WriteData_8bit(0x0B)
-        self.LCD_WriteData_8bit(0x16)
-        self.LCD_WriteData_8bit(0x26)
-        self.LCD_WriteData_8bit(0x43)
-        self.LCD_WriteData_8bit(0x3E)
-        self.LCD_WriteData_8bit(0x3F)
-        self.LCD_WriteData_8bit(0x19)
-        self.LCD_WriteData_8bit(0x19)
-        self.LCD_WriteData_8bit(0x31)
-        self.LCD_WriteData_8bit(0x3A)
+		self.LCD_WriteReg(0xE1)
+		self.LCD_WriteData_8bit(0xF0)
+		self.LCD_WriteData_8bit(0x07)
+		self.LCD_WriteData_8bit(0x0D)
+		self.LCD_WriteData_8bit(0x0D)
+		self.LCD_WriteData_8bit(0x0B)
+		self.LCD_WriteData_8bit(0x16)
+		self.LCD_WriteData_8bit(0x26)
+		self.LCD_WriteData_8bit(0x43)
+		self.LCD_WriteData_8bit(0x3E)
+		self.LCD_WriteData_8bit(0x3F)
+		self.LCD_WriteData_8bit(0x19)
+		self.LCD_WriteData_8bit(0x19)
+		self.LCD_WriteData_8bit(0x31)
+		self.LCD_WriteData_8bit(0x3A)
 
-        self.LCD_WriteReg(0x21)     
+		self.LCD_WriteReg(0x21)	 
 
-        self.LCD_WriteReg(0x29) 
+		self.LCD_WriteReg(0x29) 
 
 	#********************************************************************************
 	#function:	Set the display scan and color transfer modes
