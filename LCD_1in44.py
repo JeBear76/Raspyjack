@@ -30,9 +30,8 @@ import RPi.GPIO as GPIO
 import time
 import numpy as np
 
-LCD_1IN44 = 0
+LCD_1IN44 = 1
 LCD_1IN8 = 0
-LCD_1IN3 = 1
 
 if LCD_1IN44 == 1:
 	LCD_WIDTH  = 128  #LCD width
@@ -44,14 +43,9 @@ if LCD_1IN8 == 1:
 	LCD_HEIGHT = 128
 	LCD_X = 1
 	LCD_Y = 2
-if LCD_1IN3 == 1:
-	LCD_WIDTH  = 240
-	LCD_HEIGHT = 240
-	LCD_X = 2
-	LCD_Y = 1
 
-#LCD_X_MAXPIXEL = 132  #LCD width maximum memory 
-#LCD_Y_MAXPIXEL = 162  #LCD height maximum memory
+LCD_X_MAXPIXEL = 132  #LCD width maximum memory 
+LCD_Y_MAXPIXEL = 162  #LCD height maximum memory
 
 #scanning method
 L2R_U2D = 1
