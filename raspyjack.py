@@ -9,7 +9,7 @@ import threading, smbus, time, pyudev, serial, struct, json
 from subprocess import STDOUT, check_output
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 import LCD_Config
-import LCD_1in44
+import LCD_Driver
 import RPi.GPIO as GPIO
 import socket
 import ipaddress
@@ -1019,8 +1019,8 @@ def _setup_gpio() -> None:
 
     # --- LCD --------------------------------------------------------------
     global LCD, image, draw                      # replace the old objects
-    LCD = LCD_1in44.LCD()
-    LCD.LCD_Init(LCD_1in44.SCAN_DIR_DFT)
+    LCD = LCD_Driver.LCD()
+    LCD.LCD_Init(LCD_Driver.SCAN_DIR_DFT)
     image = Image.new("RGB", (LCD.width, LCD.height), "BLACK")
     draw  = ImageDraw.Draw(image)
 
@@ -1222,8 +1222,8 @@ def main():
 ### Default values + LCD init ###
 default = Defaults()
 
-LCD = LCD_1in44.LCD()
-Lcd_ScanDir = LCD_1in44.SCAN_DIR_DFT  # SCAN_DIR_DFT = D2U_L2R
+LCD = LCD_Driver.LCD()
+Lcd_ScanDir = LCD_Driver.SCAN_DIR_DFT  # SCAN_DIR_DFT = D2U_L2R
 LCD.LCD_Init(Lcd_ScanDir)
 LCD_Config.Driver_Delay_ms(5)  # 8
 #LCD.LCD_Clear()
