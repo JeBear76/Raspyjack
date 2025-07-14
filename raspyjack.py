@@ -90,14 +90,23 @@ class template():
 
     # Render the border
     def DrawBorder(self):
-        draw.line([(127, 12), (127, 127)], fill=self.border, width=5)
-        draw.line([(127, 127), (0, 127)], fill=self.border, width=5)
-        draw.line([(0, 127), (0, 12)], fill=self.border, width=5)
-        draw.line([(0, 12), (128, 12)], fill=self.border, width=5)
+        if LCD_Driver.LCD_1IN44 == 1 or LCD_Driver.LCD_1IN8 == 1:
+            draw.line([(127, 12), (127, 127)], fill=self.border, width=5)
+            draw.line([(127, 127), (0, 127)], fill=self.border, width=5)
+            draw.line([(0, 127), (0, 12)], fill=self.border, width=5)
+            draw.line([(0, 12), (128, 12)], fill=self.border, width=5)
+        elif LCD_Driver.LCD_1IN3 == 1:
+            draw.line([(239, 12), (239, 239)], fill=self.border, width=5)
+            draw.line([(239, 239), (0, 239)], fill=self.border, width=5)
+            draw.line([(0, 239), (0, 12)], fill=self.border, width=5)
+            draw.line([(0, 12), (240, 12)], fill=self.border, width=5)
 
     # Render inside of the border
     def DrawMenuBackground(self):
-        draw.rectangle((3, 14, 124, 124), fill=self.background)
+        if LCD_Driver.LCD_1IN44 == 1 or LCD_Driver.LCD_1IN8 == 1:
+            draw.rectangle((3, 14, 124, 124), fill=self.background)
+        elif LCD_Driver.LCD_1IN3 == 1:
+            draw.rectangle((3, 14, 236, 236), fill=self.background)
 
     # I don't know how to python pass 'class.variable' as reference properly
     def Set(self, index, color):
