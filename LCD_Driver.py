@@ -30,9 +30,9 @@ import RPi.GPIO as GPIO
 import time
 import numpy as np
 
-LCD_1IN44 = 1
+LCD_1IN44 = 0
 LCD_1IN8 = 0
-LCD_1IN3 = 0
+LCD_1IN3 = 1
 
 if LCD_1IN44 == 1:
 	LCD_WIDTH  = 128  #LCD width
